@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://rk1ylte3nohw"]
+[gd_scene load_steps=6 format=3 uid="uid://rk1ylte3nohw"]
 
 [ext_resource type="Texture2D" uid="uid://bup3v7jpnkpgu" path="res://icon.svg" id="1_7ak0p"]
 [ext_resource type="Script" path="res://CharacterBody2D.gd" id="1_od2jr"]
 [ext_resource type="Script" path="res://groundScroll.gd" id="1_u4qm5"]
+[ext_resource type="PackedScene" uid="uid://dd65b68fi3qp1" path="res://pipe_spawner.tscn" id="5_ep8hv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4luux"]
 size = Vector2(30, 30)
@@ -21,3 +22,6 @@ shape = SubResource("RectangleShape2D_4luux")
 position = Vector2(1.90735e-06, 0)
 scale = Vector2(0.234375, 0.234375)
 texture = ExtResource("1_7ak0p")
+
+[node name="pipe_spawner" parent="." instance=ExtResource("5_ep8hv")]
+position = Vector2(510, -1)

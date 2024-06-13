@@ -1,7 +1,7 @@
 extends Node2D
 
 
-@export var scroll_speed: float = 200.0
+@export var scroll_speed = global.scroll_speed
 const tile_width: int = 378
 
 @onready var ground_tile = preload("res://ground.tscn")

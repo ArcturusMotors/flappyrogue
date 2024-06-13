@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://qwb8okb1y7hp"]
+[gd_scene load_steps=3 format=3 uid="uid://cht2eoypvbbvu"]
 
-[ext_resource type="Texture2D" uid="uid://8uveaag25no0" path="res://base.png" id="1_ndnn6"]
+[ext_resource type="Texture2D" uid="uid://8uveaag25no0" path="res://world/base.png" id="1_ty8bf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r684g"]
 size = Vector2(378, 126)
@@ -14,4 +14,4 @@ shape = SubResource("RectangleShape2D_r684g")
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
 scale = Vector2(1.125, 1.125)
-texture = ExtResource("1_ndnn6")
+texture = ExtResource("1_ty8bf")

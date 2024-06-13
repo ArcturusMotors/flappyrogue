@@ -1,6 +1,6 @@
 extends Node2D
 
-var Pipe = preload("res://moving_pipes.tscn")
+var Pipe = preload("res://pipes/moving_pipes.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

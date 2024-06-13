@@ -4,7 +4,7 @@ extends Node2D
 @export var scroll_speed = global.scroll_speed
 const tile_width: int = 378
 
-@onready var ground_tile = preload("res://ground.tscn")
+@onready var ground_tile = preload("res://world/ground.tscn")
 @onready var screen_width = get_viewport().size.x
 
 var ground_tiles: Array = []

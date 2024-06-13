@@ -11,3 +11,4 @@ script = ExtResource("1_1807w")
 position = Vector2(85, 106)
 
 [node name="pipe_spawner" parent="." instance=ExtResource("4_jxihc")]
+position = Vector2(530, 0)

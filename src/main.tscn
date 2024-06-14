@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://rk1ylte3nohw"]
+[gd_scene load_steps=9 format=3 uid="uid://rk1ylte3nohw"]
 
 [ext_resource type="Script" path="res://world/main.gd" id="1_bcv45"]
 [ext_resource type="PackedScene" uid="uid://b4jyd3s86tdn7" path="res://player/player.tscn" id="3_ewenv"]
 [ext_resource type="PackedScene" uid="uid://dd65b68fi3qp1" path="res://pipes/pipe_spawner.tscn" id="4_jxihc"]
 [ext_resource type="FontFile" uid="uid://cx44njhe27kcu" path="res://HUD/1980v23P01.ttf" id="4_nela3"]
 [ext_resource type="Script" path="res://HUD/score.gd" id="5_u8wtu"]
+[ext_resource type="Texture2D" uid="uid://do386qm87nf05" path="res://world/background-day.png" id="6_n5xhd"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_45q2i"]
 font = ExtResource("4_nela3")
@@ -32,15 +33,22 @@ label_settings = SubResource("LabelSettings_45q2i")
 script = ExtResource("5_u8wtu")
 
 [node name="start_text" type="Label" parent="."]
-offset_left = 232.0
-offset_top = 146.0
-offset_right = 346.0
-offset_bottom = 169.0
+offset_left = 230.0
+offset_top = 116.0
+offset_right = 344.0
+offset_bottom = 139.0
 text = "Press SPACE to start."
 label_settings = SubResource("LabelSettings_dymqq")
 
 [node name="start_timer" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
+
+[node name="background" type="Sprite2D" parent="."]
+visible = false
+z_index = -6
+position = Vector2(72, 128)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_n5xhd")
 
 [connection signal="timeout" from="start_timer" to="." method="_on_start_timer_timeout"]

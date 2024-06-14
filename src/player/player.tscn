@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cq4v0hrp7aw1k" path="res://player/yellowbird-downflap.png" id="2_6vxm4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ft0g7"]
-size = Vector2(26, 26)
+size = Vector2(30, 24)
 
 [node name="player" type="CharacterBody2D"]
 script = ExtResource("1_io1qw")

@@ -7,6 +7,8 @@ const tile_width: int = 378 # This is based on the image
 @onready var ground_tile = preload("res://world/ground.tscn")
 @onready var screen_width = get_viewport().size.x
 
+var ground_tiles: Array = []
+
 @onready var pipe_spawner = $pipe_spawner
 
 @onready var start_text = $start_text
@@ -14,8 +16,11 @@ const tile_width: int = 378 # This is based on the image
 
 @onready var player = $player
 
+@onready var background_tile = $background
+const bg_width = 144
+var bg_scroll_speed = scroll_speed / 10
 
-var ground_tiles: Array = []
+var bg_tiles: Array = []
 
 func _ready():
 	for i in ceil(screen_width / tile_width):
@@ -26,6 +31,16 @@ func _ready():
 		ground_tiles.append(ground_tile_instance)
 	
 	# Creates the amount of tiles to fill the screen
+	
+	for i in ceil(screen_width / bg_width):
+		var bg_tile_instance = background_tile.duplicate() # This isn't a separate scene so we duplicate
+		self.add_child(bg_tile_instance)
+		bg_tile_instance.position.y = 128
+		bg_tile_instance.position.x = i * bg_width
+		bg_tile_instance.visible = true
+		bg_tiles.append(bg_tile_instance)
+	
+	# A similar effect for background
 	
 func _on_start_timer_timeout():
 	pipe_spawner.get_node("pipe_timer").start()
@@ -59,6 +74,13 @@ func _process(delta):
 			ground_tile.position.x -= scroll_speed * delta
 			if ground_tile.position.x <= -tile_width:
 				ground_tile.position.x += tile_width * ground_tiles.size()
+				
+	# Same thing for background
+	if not global.dead:
+		for bg_tile in bg_tiles:
+			bg_tile.position.x -= bg_scroll_speed * delta
+			if bg_tile.position.x <= -bg_width:
+				bg_tile.position.x += bg_width * bg_tiles.size()
 	
 	
 

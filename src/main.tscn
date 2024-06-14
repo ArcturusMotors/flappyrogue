@@ -1,8 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://rk1ylte3nohw"]
+[gd_scene load_steps=7 format=3 uid="uid://rk1ylte3nohw"]
 
 [ext_resource type="Script" path="res://world/groundScroll.gd" id="1_1807w"]
 [ext_resource type="PackedScene" uid="uid://b4jyd3s86tdn7" path="res://player/player.tscn" id="3_ewenv"]
 [ext_resource type="PackedScene" uid="uid://dd65b68fi3qp1" path="res://pipes/pipe_spawner.tscn" id="4_jxihc"]
+[ext_resource type="FontFile" uid="uid://cx44njhe27kcu" path="res://HUD/1980v23P01.ttf" id="4_nela3"]
+[ext_resource type="Script" path="res://HUD/score.gd" id="5_u8wtu"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_45q2i"]
+font = ExtResource("4_nela3")
+outline_color = Color(0, 0, 0, 1)
 
 [node name="game" type="Node2D"]
 script = ExtResource("1_1807w")
@@ -12,3 +18,12 @@ position = Vector2(85, 106)
 
 [node name="pipe_spawner" parent="." instance=ExtResource("4_jxihc")]
 position = Vector2(530, 0)
+
+[node name="Label2" type="Label" parent="."]
+texture_filter = 5
+offset_left = 3.0
+offset_top = -4.0
+offset_right = 72.0
+offset_bottom = 19.0
+label_settings = SubResource("LabelSettings_45q2i")
+script = ExtResource("5_u8wtu")

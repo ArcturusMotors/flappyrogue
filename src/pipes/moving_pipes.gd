@@ -1,6 +1,7 @@
 extends Node2D
 
 var scroll_speed = global.scroll_speed
+var score = global.score
 
 func _ready():
 	pass 
@@ -16,4 +17,4 @@ func _on_pipe_body_entered(body):
 
 func _on_score_area_body_exited(body):
 	if body is Player:
-		print("increase score here")
+		global.score += 1

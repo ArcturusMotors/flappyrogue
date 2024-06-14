@@ -5,7 +5,6 @@
 [node name="pipe_spawner" type="Node2D"]
 script = ExtResource("1_7c5an")
 
-[node name="Timer" type="Timer" parent="."]
-autostart = true
+[node name="pipe_timer" type="Timer" parent="."]
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="pipe_timer" to="." method="_on_pipe_timer_timeout"]

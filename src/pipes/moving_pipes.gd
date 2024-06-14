@@ -7,13 +7,17 @@ func _ready():
 	pass 
 
 func _process(delta):
-	position.x += -scroll_speed*delta
-	if position.x <= -600:
-		queue_free()
+	
+	# So pipes stop moving after death
+	
+	if not global.dead:
+		position.x += -scroll_speed*delta
+		if position.x <= -600:
+			queue_free()
 
 func _on_pipe_body_entered(body):
 	if body is Player:
-		print("death function goes here")
+		global.dead = true
 
 func _on_score_area_body_exited(body):
 	if body is Player:

@@ -2,7 +2,7 @@ extends Node2D
 
 
 @export var scroll_speed = global.scroll_speed
-const tile_width: int = 378
+const tile_width: int = 378 # This is based on the image
 
 @onready var ground_tile = preload("res://world/ground.tscn")
 @onready var screen_width = get_viewport().size.x
@@ -17,10 +17,14 @@ func _ready():
 		ground_tile_instance.position.x = i * tile_width
 		ground_tiles.append(ground_tile_instance)
 	
+	# Creates the amount of tiles to fill the screen
+	
 	
 func _process(delta):
 	for ground_tile in ground_tiles:
 		ground_tile.position.x -= scroll_speed * delta
 		if ground_tile.position.x <= -tile_width:
 			ground_tile.position.x += tile_width * ground_tiles.size()
+			
+	# Moves all tiles left
 

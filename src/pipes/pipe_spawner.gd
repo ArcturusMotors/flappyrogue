@@ -15,7 +15,10 @@ func _on_timer_timeout():
 	spawnPipes()
 	
 func spawnPipes():
+	
 	var pipe = Pipe.instantiate()
+	
 	add_child(pipe)
-	pipe.position.y = 173 #meant to be a bit above the y position of the bottom of the screen
+	
+	pipe.position.y = 173 # meant to be a bit above the y position of the bottom of the screen
 	pipe.position.y -= randi() % 120

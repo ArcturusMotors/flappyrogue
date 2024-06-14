@@ -1,10 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://b4jyd3s86tdn7"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_io1qw"]
-[ext_resource type="Texture2D" uid="uid://bup3v7jpnkpgu" path="res://assets/icon.svg" id="2_38x4l"]
+[ext_resource type="Texture2D" uid="uid://cq4v0hrp7aw1k" path="res://player/yellowbird-downflap.png" id="2_6vxm4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ft0g7"]
-size = Vector2(26, 26)
+size = Vector2(30, 24)
 
 [node name="player" type="CharacterBody2D"]
 script = ExtResource("1_io1qw")
@@ -14,5 +14,5 @@ shape = SubResource("RectangleShape2D_ft0g7")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(1.90735e-06, 0)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("2_38x4l")
+scale = Vector2(0.9, 1)
+texture = ExtResource("2_6vxm4")

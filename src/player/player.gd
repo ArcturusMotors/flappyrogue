@@ -25,20 +25,18 @@ func flapanim():
 
 func _physics_process(delta):
 	if global.playing and not global.dead:
-		# Add the gravity.
-		velocity.y += gravity * delta
-
 		# Handle Jump
 		if Input.is_action_just_pressed("jump"):
 			velocity.y = JUMP_VELOCITY
 			flapanim()
 
-		move_and_slide()
+	# Add the gravity.
+	velocity.y += gravity * delta
 
-		# Rotate the player based on velocity
-		var target_rotation = velocity.y * 0.002
+	move_and_slide()
 
-		#Smooth out the rotation of the bird
-		rotation = lerp_angle(rotation, target_rotation, ROTATION_LERP_SPEED)
-	else:
-		pass
+	# Rotate the player based on velocity
+	var target_rotation = velocity.y * 0.002
+
+	#Smooth out the rotation of the bird
+	rotation = lerp_angle(rotation, target_rotation, ROTATION_LERP_SPEED)

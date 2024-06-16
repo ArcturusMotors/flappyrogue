@@ -17,9 +17,9 @@ position = Vector2(1.90735e-06, 0)
 scale = Vector2(0.9, 1)
 texture = ExtResource("2_6vxm4")
 
-[node name="DodgeTimer" type="Timer" parent="."]
+[node name="DodgeDuration" type="Timer" parent="."]
 
 [node name="HoverTimer" type="Timer" parent="."]
 
-[connection signal="timeout" from="DodgeTimer" to="." method="_on_dodge_timer_timeout"]
+[connection signal="timeout" from="DodgeDuration" to="." method="_on_dodge_timer_timeout"]
 [connection signal="timeout" from="HoverTimer" to="." method="_on_hover_timer_timeout"]

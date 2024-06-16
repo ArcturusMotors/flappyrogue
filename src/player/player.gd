@@ -47,10 +47,11 @@ func _physics_process(delta):
 
 # Dodging Mechanic
 func dodge():
-	self.modulate.a = 0.5
-	get_node("CollisionShape2D").disabled = true
-	get_node("DodgeTimer").start()
-	
+	if global.can_dodge == true:
+		global.can_dodge = false
+		self.modulate.a = 0.5
+		get_node("CollisionShape2D").disabled = true
+		get_node("DodgeDuration").start()
 
 func _on_dodge_timer_timeout():
 	self.modulate.a = 1
@@ -58,12 +59,13 @@ func _on_dodge_timer_timeout():
 	
 #Hover Mechanic
 func hover():
-	get_node("CollisionShape2D").disabled = true
-	self.modulate.a = 0.5
-	var interrupt = false
-	for i in range(7): # to control how long the powerup lasts for
-		velocity.y = JUMP_VELOCITY*0.5
-		flapanim()
-		await get_tree().create_timer(0.3912).timeout
-	get_node("CollisionShape2D").disabled = false
-	self.modulate.a = 1
+	if global.can_hover == true:
+		global.can_hover = false
+		get_node("CollisionShape2D").disabled = true
+		self.modulate.a = 0.5
+		for i in range(7): # to control how long the powerup lasts for
+			velocity.y = JUMP_VELOCITY*0.5
+			flapanim()
+			await get_tree().create_timer(0.28).timeout
+		get_node("CollisionShape2D").disabled = false
+		self.modulate.a = 1

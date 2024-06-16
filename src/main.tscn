@@ -61,4 +61,12 @@ offset_right = 246.0
 offset_bottom = 130.0
 scale = Vector2(0.74787, 0.74787)
 
+[node name="dodgetimer" type="Timer" parent="."]
+wait_time = 10.0
+
+[node name="hovertimer" type="Timer" parent="."]
+wait_time = 10.0
+
 [connection signal="timeout" from="start_timer" to="." method="_on_start_timer_timeout"]
+[connection signal="timeout" from="dodgetimer" to="." method="_on_dodgetimer_timeout"]
+[connection signal="timeout" from="hovertimer" to="." method="_on_hovertimer_timeout"]

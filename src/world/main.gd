@@ -99,15 +99,20 @@ func _process(delta):
 		global.playing = false
 		global.dead = false
 		global.score = 0
+		global.can_dodge = true
+		global.can_hover = true
 		print("Lmao")
-	
+		
 	# Powerup Inputs
-	if Input.is_key_pressed(KEY_Q):
+	if Input.is_key_pressed(KEY_Q) and global.can_dodge == true:
 		player.dodge()
-	if Input.is_key_pressed(KEY_E):
+		get_node("dodgetimer").start()
+	if Input.is_key_pressed(KEY_E) and global.can_hover == true:
 		player.hover()
-
-
-
-
-
+		get_node("hovertimer").start()
+			
+# Resets powerups
+func _on_dodgetimer_timeout():
+	global.can_dodge = true
+func _on_hovertimer_timeout():
+	global.can_hover = true

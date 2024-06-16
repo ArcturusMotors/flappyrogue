@@ -38,5 +38,32 @@ func _physics_process(delta):
 	# Rotate the player based on velocity
 	var target_rotation = velocity.y * 0.002
 
-	#Smooth out the rotation of the bird
+	# Smooth out the rotation of the bird
 	rotation = lerp_angle(rotation, target_rotation, ROTATION_LERP_SPEED)
+	
+	# Lets the player fall off the screen after death
+	if global.dead == true:
+		get_node("CollisionShape2D").disabled = true
+
+# Dodging Mechanic
+func dodge():
+	self.modulate.a = 0.5
+	get_node("CollisionShape2D").disabled = true
+	get_node("DodgeTimer").start()
+	
+
+func _on_dodge_timer_timeout():
+	self.modulate.a = 1
+	get_node("CollisionShape2D").disabled = false
+	
+#Hover Mechanic
+func hover():
+	get_node("CollisionShape2D").disabled = true
+	self.modulate.a = 0.5
+	var interrupt = false
+	for i in range(7): # to control how long the powerup lasts for
+		velocity.y = JUMP_VELOCITY*0.5
+		flapanim()
+		await get_tree().create_timer(0.3912).timeout
+	get_node("CollisionShape2D").disabled = false
+	self.modulate.a = 1

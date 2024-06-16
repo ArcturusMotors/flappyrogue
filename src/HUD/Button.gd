@@ -11,7 +11,6 @@ func _ready():
 func _process(delta):
 	pass
 
-
-func _on_timer_3_timeout():
+func _on_timer_1_timeout():
 	self.visible = true
 	button_anim.play("button_anim")

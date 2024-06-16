@@ -101,6 +101,11 @@ func _process(delta):
 		global.score = 0
 		print("Lmao")
 	
+	# Powerup Inputs
+	if Input.is_key_pressed(KEY_Q):
+		player.dodge()
+	if Input.is_key_pressed(KEY_E):
+		player.hover()
 
 
 

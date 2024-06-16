@@ -22,6 +22,10 @@ var bg_scroll_speed = scroll_speed / 10
 
 var bg_tiles: Array = []
 
+@onready var endmenu = $endmenu
+
+var played_once = false
+
 func _ready():
 	for i in ceil(screen_width / tile_width):
 		var ground_tile_instance = ground_tile.instantiate()
@@ -82,6 +86,20 @@ func _process(delta):
 			if bg_tile.position.x <= -bg_width:
 				bg_tile.position.x += bg_width * bg_tiles.size()
 	
+	if global.dead && not played_once:
+		endmenu.visible = true
+		endmenu.get_node("AnimationPlayer").play("menu_slam")
+		endmenu.get_node("timer_1").start()
+		# print("Bug")
+		played_once = true
+		
+	if global.restart == true:
+		get_tree().reload_current_scene()
+		global.restart = false
+		global.playing = false
+		global.dead = false
+		global.score = 0
+		print("Lmao")
 	
 
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://rk1ylte3nohw"]
+[gd_scene load_steps=11 format=3 uid="uid://rk1ylte3nohw"]
 
 [ext_resource type="Script" path="res://world/main.gd" id="1_bcv45"]
 [ext_resource type="PackedScene" uid="uid://b4jyd3s86tdn7" path="res://player/player.tscn" id="3_ewenv"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://HUD/score.gd" id="5_u8wtu"]
 [ext_resource type="Texture2D" uid="uid://do386qm87nf05" path="res://world/background-day.png" id="6_n5xhd"]
 [ext_resource type="PackedScene" uid="uid://dyu8154w6g73m" path="res://HUD/endmenu.tscn" id="7_k7jbo"]
+[ext_resource type="PackedScene" uid="uid://cktfc2pyaysrp" path="res://spheres/status_sphere.tscn" id="8_mbnv5"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_45q2i"]
 font = ExtResource("4_nela3")
@@ -19,7 +20,13 @@ font = ExtResource("4_nela3")
 script = ExtResource("1_bcv45")
 
 [node name="player" parent="." instance=ExtResource("3_ewenv")]
+z_index = 4
 position = Vector2(85, 106)
+
+[node name="hover_timeout" type="Timer" parent="player"]
+one_shot = true
+
+[node name="dodge_timeout" type="Timer" parent="player"]
 
 [node name="pipe_spawner" parent="." instance=ExtResource("4_jxihc")]
 position = Vector2(530, 0)
@@ -61,4 +68,32 @@ offset_right = 246.0
 offset_bottom = 130.0
 scale = Vector2(0.74787, 0.74787)
 
+[node name="dodgecooldown" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
+[node name="hovercooldown" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
+[node name="hover_sphere" parent="." instance=ExtResource("8_mbnv5")]
+z_index = 2
+offset_left = 450.0
+offset_top = 246.0
+offset_right = 460.0
+offset_bottom = 256.0
+scale = Vector2(2, 2)
+
+[node name="dodge_sphere" parent="." instance=ExtResource("8_mbnv5")]
+z_index = 2
+offset_left = 419.0
+offset_top = 246.0
+offset_right = 429.0
+offset_bottom = 256.0
+scale = Vector2(2, 2)
+
+[connection signal="timeout" from="player/hover_timeout" to="player" method="_on_hover_timeout_timeout"]
+[connection signal="timeout" from="player/dodge_timeout" to="player" method="_on_dodge_timeout_timeout"]
 [connection signal="timeout" from="start_timer" to="." method="_on_start_timer_timeout"]
+[connection signal="timeout" from="dodgecooldown" to="." method="_on_dodgetimer_timeout"]
+[connection signal="timeout" from="hovercooldown" to="." method="_on_hovertimer_timeout"]

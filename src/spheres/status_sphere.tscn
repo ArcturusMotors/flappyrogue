@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://cktfc2pyaysrp"]
+
+[node name="status_sphere" type="TextureRect"]
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 5.0

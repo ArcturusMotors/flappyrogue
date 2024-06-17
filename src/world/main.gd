@@ -26,6 +26,19 @@ var bg_tiles: Array = []
 
 var played_once = false
 
+# Ability timers
+
+@onready var hovercooldown = $hovercooldown
+@onready var dodgecooldown = $dodgecooldown
+
+# Status spheres
+
+@onready var hover_sphere = $hover_sphere
+@onready var dodge_sphere = $dodge_sphere
+
+@onready var dodge_timeout = $player/dodge_timeout
+@onready var hover_timeout = $player/hover_timeout
+
 func _ready():
 	for i in ceil(screen_width / tile_width):
 		var ground_tile_instance = ground_tile.instantiate()
@@ -106,10 +119,69 @@ func _process(delta):
 	# Powerup Inputs
 	if Input.is_key_pressed(KEY_Q) and global.can_dodge == true:
 		player.dodge()
-		get_node("dodgetimer").start()
+		dodgecooldown.start()
 	if Input.is_key_pressed(KEY_E) and global.can_hover == true:
 		player.hover()
-		get_node("hovertimer").start()
+		hovercooldown.start()
+		
+	# Status spheres for dodge and hover
+	if global.dodging:
+		var time_left = dodge_timeout.time_left
+		var status_percent = time_left / global.dodge_time
+		
+		if status_percent >= 0.75:
+			dodge_sphere.texture = load("res://spheres/orange_sphere_1.png")
+		elif status_percent >= 0.5:
+			dodge_sphere.texture = load("res://spheres/orange_sphere_2.png")
+		elif status_percent >= 0.25:
+			dodge_sphere.texture = load("res://spheres/orange_sphere_3.png")
+		else:
+			dodge_sphere.texture = load("res://spheres/orange_sphere_4.png")
+	
+	else:
+		
+		if dodgecooldown.is_stopped():
+			dodge_sphere.texture = load("res://spheres/orange_sphere_0.png")
+		else:
+			var time_left = dodgecooldown.time_left
+			if time_left >= 7.5:
+				dodge_sphere.texture = load("res://spheres/orange_sphere_4.png")
+			elif time_left >= 5:
+				dodge_sphere.texture = load("res://spheres/orange_sphere_3.png")
+			elif time_left >= 2.5:
+				dodge_sphere.texture = load("res://spheres/orange_sphere_2.png")
+			elif time_left >=0:
+				dodge_sphere.texture = load("res://spheres/orange_sphere_1.png")
+	
+	if global.hovering:
+		var time_left = hover_timeout.time_left
+		var status_percent = time_left / global.hover_time
+		
+		if status_percent >= 0.75:
+			hover_sphere.texture = load("res://spheres/red_sphere_1.png")
+		elif status_percent >= 0.5:
+			hover_sphere.texture = load("res://spheres/red_sphere_2.png")
+		elif status_percent >= 0.25:
+			hover_sphere.texture = load("res://spheres/red_sphere_3.png")
+		else:
+			hover_sphere.texture = load("res://spheres/red_sphere_4.png")
+	
+	else:
+			
+		if hovercooldown.is_stopped():
+			hover_sphere.texture = load("res://spheres/red_sphere_0.png")
+		else:
+			var time_left = hovercooldown.time_left
+			var status_percent = (10 - time_left) / 4
+			if time_left >= 7.5:
+				hover_sphere.texture = load("res://spheres/red_sphere_4.png")
+			elif time_left >= 5:
+				hover_sphere.texture = load("res://spheres/red_sphere_3.png")
+			elif time_left >= 2.5:
+				hover_sphere.texture = load("res://spheres/red_sphere_2.png")
+			elif time_left >=0:
+				hover_sphere.texture = load("res://spheres/red_sphere_1.png")
+	
 			
 # Resets powerups
 func _on_dodgetimer_timeout():

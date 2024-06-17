@@ -342,7 +342,6 @@ offset_top = -92.0
 offset_right = 248.0
 scale = Vector2(0.00363338, 0.00365911)
 pivot_offset = Vector2(13.2279, 15.245)
-text = "55"
 label_settings = SubResource("LabelSettings_bwd82")
 script = ExtResource("5_7s64d")
 

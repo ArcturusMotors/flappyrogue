@@ -16,7 +16,7 @@ func _process(delta):
 			queue_free()
 
 func _on_pipe_body_entered(body):
-	if body is Player:
+	if body is Player and global.dodging == false:
 		global.dead = true
 	
 

@@ -12,6 +12,7 @@ var hovering = false
 var dodging = false
 var hover_time = 2
 var dodge_time = 2
+var sine_cycle = 0
 
 func _ready():
 	pass

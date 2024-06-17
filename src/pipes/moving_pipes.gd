@@ -19,7 +19,6 @@ func _on_pipe_body_entered(body):
 	if body is Player and global.dodging == false:
 		global.dead = true
 	
-
 func _on_score_area_body_exited(body):
 	if body is Player:
 		global.score += 1

@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://b26pr6d0a6lbu"]
+
+[ext_resource type="Script" path="res://enemies/eagle_spawner.gd" id="1_rf2lo"]
+
+[node name="eagle_spawner" type="Node2D"]
+script = ExtResource("1_rf2lo")
+
+[node name="grace_period" type="Timer" parent="."]
+wait_time = 7.0
+one_shot = true
+
+[node name="eagle_timer" type="Timer" parent="."]
+wait_time = 5.0
+
+[connection signal="timeout" from="grace_period" to="." method="_on_grace_period_timeout"]
+[connection signal="timeout" from="eagle_timer" to="." method="_on_eagle_timer_timeout"]

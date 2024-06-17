@@ -30,5 +30,3 @@ func spawnPipes():
 	pipe.position.y = 173 # meant to be a bit above the y position of the bottom of the screen
 	pipe.position.y -= randi() % 120
 
-
-

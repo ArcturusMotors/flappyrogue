@@ -1,0 +1,43 @@
+[gd_scene load_steps=3 format=3 uid="uid://dpxvd8sp6o4wq"]
+
+[ext_resource type="PackedScene" uid="uid://c7jm1v6jefii0" path="res://enemies/eagle.tscn" id="2_ct4pl"]
+
+[sub_resource type="GDScript" id="GDScript_2l8bw"]
+script/source = "extends Node2D
+
+var scroll_speed = global.scroll_speed
+var x = 1
+
+func _ready():
+	pass 
+
+func _process(delta):
+	
+	# So pipes stop moving after death
+	
+	if not global.dead:
+		position.x -= scroll_speed * 1.5 * delta
+		if position.x <= -600.0:
+			queue_free()
+		if position.x <= 50.0:
+			get_node(\"pause\").start()
+			x = 0
+	global.sine_cycle += 0.1
+	position.y += sin(global.sine_cycle)
+			
+func _on_eagle_body_entered(body):
+	if body is Player and global.dodging == false:
+		global.dead = true
+"
+
+[node name="moving_eagle" type="Node2D"]
+position = Vector2(2, -94)
+script = SubResource("GDScript_2l8bw")
+
+[node name="Eagle" parent="." instance=ExtResource("2_ct4pl")]
+position = Vector2(-2, 94)
+
+[node name="pause" type="Timer" parent="."]
+
+[connection signal="body_entered" from="Eagle" to="." method="_on_eagle_body_entered"]
+[connection signal="timeout" from="pause" to="." method="_on_pause_timeout"]

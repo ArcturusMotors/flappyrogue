@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://rk1ylte3nohw"]
+[gd_scene load_steps=13 format=3 uid="uid://rk1ylte3nohw"]
 
 [ext_resource type="Script" path="res://world/main.gd" id="1_bcv45"]
 [ext_resource type="PackedScene" uid="uid://b4jyd3s86tdn7" path="res://player/player.tscn" id="3_ewenv"]
@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://do386qm87nf05" path="res://world/background-day.png" id="6_n5xhd"]
 [ext_resource type="PackedScene" uid="uid://dyu8154w6g73m" path="res://HUD/endmenu.tscn" id="7_k7jbo"]
 [ext_resource type="PackedScene" uid="uid://cktfc2pyaysrp" path="res://spheres/status_sphere.tscn" id="8_mbnv5"]
+[ext_resource type="AudioStream" uid="uid://jdsp5j3j6p5h" path="res://sounds/dodge_charged.wav" id="9_4h5tc"]
+[ext_resource type="AudioStream" uid="uid://qhmbsfxavrf" path="res://sounds/hover_charged.wav" id="10_pgryx"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_45q2i"]
 font = ExtResource("4_nela3")
@@ -92,8 +94,16 @@ offset_right = 429.0
 offset_bottom = 256.0
 scale = Vector2(2, 2)
 
+[node name="dodge_charged" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_4h5tc")
+
+[node name="hover_charged" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_pgryx")
+
 [connection signal="timeout" from="player/hover_timeout" to="player" method="_on_hover_timeout_timeout"]
 [connection signal="timeout" from="player/dodge_timeout" to="player" method="_on_dodge_timeout_timeout"]
 [connection signal="timeout" from="start_timer" to="." method="_on_start_timer_timeout"]
+[connection signal="timeout" from="dodgecooldown" to="." method="_on_dodgecooldown_timeout"]
 [connection signal="timeout" from="dodgecooldown" to="." method="_on_dodgetimer_timeout"]
+[connection signal="timeout" from="hovercooldown" to="." method="_on_hovercooldown_timeout"]
 [connection signal="timeout" from="hovercooldown" to="." method="_on_hovertimer_timeout"]

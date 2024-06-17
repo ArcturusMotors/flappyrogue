@@ -39,6 +39,9 @@ var played_once = false
 @onready var dodge_timeout = $player/dodge_timeout
 @onready var hover_timeout = $player/hover_timeout
 
+@onready var dodge_charged_sound = $dodge_charged
+@onready var hover_charged_sound = $hover_charged
+
 func _ready():
 	for i in ceil(screen_width / tile_width):
 		var ground_tile_instance = ground_tile.instantiate()
@@ -120,9 +123,13 @@ func _process(delta):
 	if Input.is_key_pressed(KEY_Q) and global.can_dodge == true:
 		player.dodge()
 		dodgecooldown.start()
+		
+		# dodge_charged_sound.play()
 	if Input.is_key_pressed(KEY_E) and global.can_hover == true:
 		player.hover()
 		hovercooldown.start()
+		
+		# hover_charged_sound.play()
 		
 	# Status spheres for dodge and hover
 	if global.dodging:
@@ -188,3 +195,11 @@ func _on_dodgetimer_timeout():
 	global.can_dodge = true
 func _on_hovertimer_timeout():
 	global.can_hover = true
+
+
+func _on_dodgecooldown_timeout():
+	dodge_charged_sound.play()
+
+
+func _on_hovercooldown_timeout():
+	hover_charged_sound.play()

@@ -8,8 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://do386qm87nf05" path="res://world/background-day.png" id="6_n5xhd"]
 [ext_resource type="PackedScene" uid="uid://dyu8154w6g73m" path="res://HUD/endmenu.tscn" id="7_k7jbo"]
 [ext_resource type="PackedScene" uid="uid://cktfc2pyaysrp" path="res://spheres/status_sphere.tscn" id="8_mbnv5"]
-[ext_resource type="AudioStream" uid="uid://dagdwha5o1avs" path="res://sounds/dodge_charged.wav" id="9_4h5tc"]
-[ext_resource type="AudioStream" uid="uid://cc7gg4fdar6e7" path="res://sounds/hover_charged.wav" id="10_pgryx"]
+[ext_resource type="AudioStream" uid="uid://jdsp5j3j6p5h" path="res://sounds/dodge_charged.wav" id="9_4h5tc"]
+[ext_resource type="AudioStream" uid="uid://qhmbsfxavrf" path="res://sounds/hover_charged.wav" id="10_pgryx"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_45q2i"]
 font = ExtResource("4_nela3")

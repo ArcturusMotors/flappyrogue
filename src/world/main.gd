@@ -10,6 +10,7 @@ const tile_width: int = 378 # This is based on the image
 var ground_tiles: Array = []
 
 @onready var pipe_spawner = $pipe_spawner
+@onready var eagle_spawner = $eagle_spawner
 
 @onready var start_text = $start_text
 @onready var start_timer = $start_timer
@@ -64,6 +65,7 @@ func _ready():
 	
 func _on_start_timer_timeout():
 	pipe_spawner.get_node("pipe_timer").start()
+	eagle_spawner.get_node("grace_period").start()
 	start_text.queue_free()
 
 	

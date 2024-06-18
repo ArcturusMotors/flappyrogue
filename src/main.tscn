@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dyu8154w6g73m" path="res://HUD/endmenu.tscn" id="7_k7jbo"]
 [ext_resource type="PackedScene" uid="uid://cktfc2pyaysrp" path="res://spheres/status_sphere.tscn" id="8_mbnv5"]
 [ext_resource type="AudioStream" uid="uid://jdsp5j3j6p5h" path="res://sounds/dodge_charged.wav" id="9_4h5tc"]
-[ext_resource type="PackedScene" uid="uid://b26pr6d0a6lbu" path="res://enemies/eagle_spawner.tscn" id="9_dit2i"]
+[ext_resource type="PackedScene" uid="uid://b26pr6d0a6lbu" path="res://eagle/eagle_spawner.tscn" id="9_dit2i"]
 [ext_resource type="AudioStream" uid="uid://qhmbsfxavrf" path="res://sounds/hover_charged.wav" id="10_pgryx"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_45q2i"]
@@ -109,5 +109,5 @@ position = Vector2(590, 114)
 [connection signal="timeout" from="start_timer" to="." method="_on_start_timer_timeout"]
 [connection signal="timeout" from="dodgecooldown" to="." method="_on_dodgecooldown_timeout"]
 [connection signal="timeout" from="dodgecooldown" to="." method="_on_dodgetimer_timeout"]
-[connection signal="timeout" from="hovercooldown" to="." method="_on_hovertimer_timeout"]
 [connection signal="timeout" from="hovercooldown" to="." method="_on_hovercooldown_timeout"]
+[connection signal="timeout" from="hovercooldown" to="." method="_on_hovertimer_timeout"]
